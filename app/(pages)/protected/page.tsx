@@ -1,16 +1,13 @@
+import HeaderNav from "@/app/_components/header";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import HeaderNav from "../_components/header";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return redirect("/sign-in");
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data?.user) {
+    redirect("/login");
   }
 
   return (
