@@ -35,13 +35,13 @@ const HeaderNav = async () => {
     .single();
 
   return (
-    <div className="h-[70px] w-full border-b-[0.1rem] border-gray-800 flex items-center p-4 justify-between">
+    <div className="h-[70px] w-full shadow-md flex items-center p-4 justify-between">
       <div className="flex flex-row gap-2 items-center justify-center">
         <DropdownMenu>
           <DropdownMenuTrigger>
             <AvatarImage url={profiles?.avatar_url} />
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="mx-1">
             <DropdownMenuItem>
               <User className="mr-2 h-4 w-4" />
               <Link href="./account">
