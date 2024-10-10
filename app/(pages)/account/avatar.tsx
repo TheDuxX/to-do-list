@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import Image from 'next/image'
+import { Label } from '@/app/_components/ui/label'
+import { Input } from '@/app/_components/ui/input'
 
 export default function Avatar({
   uid,
@@ -71,17 +73,17 @@ export default function Avatar({
           height={size}
           src={avatarUrl}
           alt="Avatar"
-          className="avatar image"
+          className="avatar image rounded-full"
           style={{ height: size, width: size }}
         />
       ) : (
         <div className="avatar no-image" style={{ height: size, width: size }} />
       )}
       <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
+        <Label className="button primary block" htmlFor="single">
           {uploading ? 'Uploading ...' : 'Upload'}
-        </label>
-        <input
+        </Label>
+        <Input
           style={{
             visibility: 'hidden',
             position: 'absolute',

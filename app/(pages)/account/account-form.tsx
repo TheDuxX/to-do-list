@@ -3,6 +3,9 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { type User } from "@supabase/supabase-js";
 import Avatar from "./avatar";
+import { Button } from "@/app/_components/ui/button";
+import { Label } from "@/app/_components/ui/label";
+import { Input } from "@/app/_components/ui/input";
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
@@ -70,23 +73,23 @@ export default function AccountForm({ user }: { user: User | null }) {
   }
 
   return (
-    <div className="form-widget w-full flex flex-col items-center justify-center">
+    <div className="form-widget w-full flex gap-1 flex-col items-center justify-center mt-4">
       <Avatar
         uid={user?.id ?? null}
         url={avatar_url}
         size={150}
-        onUpload={(url:any) => {
+        onUpload={(url: any) => {
           setAvatarUrl(url);
           updateProfile({ fullname, username, avatar_url: url });
         }}
       />
       <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={user?.email} disabled />
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="text" value={user?.email} disabled />
       </div>
       <div>
-        <label htmlFor="fullName">Full Name</label>
-        <input
+        <Label htmlFor="fullName">Full Name</Label>
+        <Input
           id="fullName"
           type="text"
           value={fullname || ""}
@@ -94,8 +97,8 @@ export default function AccountForm({ user }: { user: User | null }) {
         />
       </div>
       <div>
-        <label htmlFor="username">Username</label>
-        <input
+        <Label htmlFor="username">Username</Label>
+        <Input
           id="username"
           type="text"
           value={username || ""}
@@ -103,21 +106,18 @@ export default function AccountForm({ user }: { user: User | null }) {
         />
       </div>
 
-      <div>
-        <button
-          className="button primary block"
+      <div className="flex flex-row gap-2 w-[55%] justify-center mt-2">
+        <Button
+          className="button primary block w-full"
           onClick={() => updateProfile({ fullname, username, avatar_url })}
           disabled={loading}
         >
-          {loading ? "Loading ..." : "Update"}
-        </button>
-      </div>
-
-      <div>
-        <form action="/auth/signout" method="post">
-          <button className="button block" type="submit">
-            Sign out
-          </button>
+          {loading ? "Carregando ..." : "Salvar"}
+        </Button>
+        <form action="/auth/signout" method="post" className="w-full">
+          <Button className="button block w-full" type="submit" variant="secondary">
+            Logout
+          </Button>
         </form>
       </div>
     </div>
