@@ -35,7 +35,7 @@ export default function AccountForm({ user }: { user: User | null }) {
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      alert("Error loading user data!");
+      alert("Erro ao carregar dados do usuário!");
     } finally {
       setLoading(false);
     }
@@ -64,9 +64,9 @@ export default function AccountForm({ user }: { user: User | null }) {
         updated_at: new Date().toISOString(),
       });
       if (error) throw error;
-      alert("Profile updated!");
+      alert("Perfil atualizado");
     } catch (error) {
-      alert("Error updating the data!");
+      alert("Erro ao atualizar dados!");
     } finally {
       setLoading(false);
     }
@@ -84,11 +84,11 @@ export default function AccountForm({ user }: { user: User | null }) {
         }}
       />
       <div>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">E-mail</Label>
         <Input id="email" type="text" value={user?.email} disabled />
       </div>
       <div>
-        <Label htmlFor="fullName">Full Name</Label>
+        <Label htmlFor="fullName">Nome Completo</Label>
         <Input
           id="fullName"
           type="text"
@@ -97,7 +97,7 @@ export default function AccountForm({ user }: { user: User | null }) {
         />
       </div>
       <div>
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="username">Usuário</Label>
         <Input
           id="username"
           type="text"
@@ -106,16 +106,20 @@ export default function AccountForm({ user }: { user: User | null }) {
         />
       </div>
 
-      <div className="flex flex-row gap-2 w-[55%] justify-center mt-2">
+      <div className="flex flex-row gap-2 justify-center mt-2">
         <Button
-          className="button primary block w-full"
+          className="button primary block min-w-[50%]"
           onClick={() => updateProfile({ fullname, username, avatar_url })}
           disabled={loading}
         >
           {loading ? "Carregando ..." : "Salvar"}
         </Button>
         <form action="/auth/signout" method="post" className="w-full">
-          <Button className="button block w-full" type="submit" variant="secondary">
+          <Button
+            className="button block min-w-[50%]"
+            type="submit"
+            variant="secondary"
+          >
             Logout
           </Button>
         </form>
