@@ -1,4 +1,4 @@
-import HeaderNav from "@/app/_components/header";
+import HeaderNav from "@/app/(home)/_component/header";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 

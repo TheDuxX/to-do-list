@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { LogOut, MenuIcon, User } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import AvatarImage from "./avatar";
+import AvatarImage from "../../_components/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +10,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "../../_components/ui/dropdown-menu";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Button } from "./ui/button";
-import { signOutAction } from "../actions";
-import LogOutButton from "./logout-button";
+import { Button } from "../../_components/ui/button";
+import { signOutAction } from "../../actions";
+import LogOutButton from "../../_components/logout-button";
 
 const HeaderNav = async () => {
   const supabase = createClient();

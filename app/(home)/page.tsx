@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import HeaderNav from "../_components/header";
+import HeaderNav from "./_component/header";
 import { ThemeSwitcher } from "../_components/theme-switcher";
 
 export default async function Index() {
