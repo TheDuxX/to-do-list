@@ -27,9 +27,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="h-svh flex flex-col items-center">
+          <main className="h-svh w-svw flex flex-col items-center">
             {children}
-
             <FooterMenu />
           </main>
         </ThemeProvider>

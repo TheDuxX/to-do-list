@@ -110,33 +110,33 @@ export default function Avatar({
   };
 
   return (
-    <div>
+    <div className="w-full">
       {avatarUrl ? (
-        <div className="relative">
-          <Image
-            width={size}
-            height={size}
-            src={avatarUrl}
-            alt="Avatar"
-            className="avatar image rounded-full object-cover"
-            style={{ height: size, width: size }}
-          />
-          <Button
-            type="button"
-            variant="destructive"
-            onClick={deleteImage}
-            className="absolute bottom-2 right-2 rounded-full p-0 w-6 h-6 flex items-center justify-center"
-          >
-            <Trash2 size={15} />
-          </Button>
-          <Button
-            type="button"
-            variant="default"
-            onClick={handleClickUploadImagesButton}
-            className="absolute bottom-2 left-2 rounded-full p-0 w-6 h-6 flex items-center justify-center"
-          >
-            <PenIcon size={15} />
-          </Button>
+        <div className="py-4 flex flex-col items-center justify-center w-full">
+          <div className="w-32 relative aspect-square rounded-full ">
+            <Image
+              src={avatarUrl}
+              alt="Avatar"
+              fill
+              className="object-fill rounded-full"
+            />
+            <Button
+              type="button"
+              variant="destructive"
+              onClick={deleteImage}
+              className="absolute bottom-1 right-1 rounded-full p-0 w-6 h-6 flex items-center justify-center"
+            >
+              <Trash2 size={15} />
+            </Button>
+            <Button
+              type="button"
+              variant="default"
+              onClick={handleClickUploadImagesButton}
+              className="absolute bottom-1 left-1 rounded-full p-0 w-6 h-6 flex items-center justify-center"
+            >
+              <PenIcon size={15} />
+            </Button>
+          </div>
         </div>
       ) : (
         <div

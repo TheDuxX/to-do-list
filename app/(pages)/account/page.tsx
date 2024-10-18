@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import AccountForm from "./_components/account-form";
 import Navbar from "@/app/_components/header";
 
-export default async function Account() {
+const Account = async () => {
   const supabase = createClient();
 
   const {
@@ -15,4 +15,6 @@ export default async function Account() {
       <AccountForm user={user} />
     </>
   );
-}
+};
+
+export default Account;
