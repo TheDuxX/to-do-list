@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={GeistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground">
+      <body className="bg-gradient-to-b from-darkPurple to-background text-foreground">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
