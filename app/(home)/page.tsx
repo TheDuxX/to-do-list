@@ -17,7 +17,6 @@ export default async function Index() {
     <>
       <HeaderNav />
       <List />
-      <FooterMenu />
     </>
   );
 }

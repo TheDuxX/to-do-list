@@ -1,7 +1,7 @@
-
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import FooterMenu from "./_components/footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -29,6 +29,8 @@ export default function RootLayout({
         >
           <main className="h-svh flex flex-col items-center">
             {children}
+
+            <FooterMenu />
           </main>
         </ThemeProvider>
       </body>
