@@ -32,6 +32,14 @@ const config = {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
+			darkPurple: {
+				DEFAULT: 'hsl(var(--dark-purple))',
+				foreground: 'hsl(var(--dark-purple-foreground))'
+			},
+			secondaryBlack: {
+				DEFAULT: 'hsl(var(--secondary-black))',
+				foreground: 'hsl(var(--secondary-black-foreground))'
+			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
