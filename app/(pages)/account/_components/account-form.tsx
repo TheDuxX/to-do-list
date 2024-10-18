@@ -6,6 +6,7 @@ import { Button } from "@/app/_components/ui/button";
 import { Label } from "@/app/_components/ui/label";
 import { Input } from "@/app/_components/ui/input";
 import Avatar from "./avatar";
+import { signOutAction } from "@/app/actions";
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
@@ -114,7 +115,7 @@ export default function AccountForm({ user }: { user: User | null }) {
         >
           {loading ? "Carregando ..." : "Salvar"}
         </Button>
-        <form action="/auth/signout" method="post" className="w-full">
+        <form action={signOutAction} method="post" className="w-full">
           <Button
             className="button block min-w-[50%]"
             type="submit"
