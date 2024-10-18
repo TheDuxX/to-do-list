@@ -11,7 +11,6 @@ const Account = async () => {
 
   return (
     <>
-      <Navbar />
       <AccountForm user={user} />
     </>
   );

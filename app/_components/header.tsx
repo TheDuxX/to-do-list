@@ -1,4 +1,5 @@
 'use client'
+import { links } from "@/utils/links";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
@@ -6,11 +7,7 @@ import { useParams, usePathname } from "next/navigation";
 const Navbar = () => {
   const pathname = usePathname();
   const params = useParams(); // Hook para acessar parâmetros da URL
-
-  const links = [
-    { name: "Início", href: "/" },
-    { name: "Perfil", href: "/account" },
-  ];
+  const link = links;
 
   return (
     <>
@@ -18,7 +15,7 @@ const Navbar = () => {
         <Link href="/">
           <ChevronLeft className="stroke-1 absolute left-2 top-[25px]" />
         </Link>
-        {links.map((link) => {
+        {link.map((link) => {
           if (link.href === pathname) {
             return (
               <p key={link.href} className="font-medium">
