@@ -118,7 +118,7 @@ export default function AccountForm({ user }: { user: User | null }) {
           <Button
             className="button block min-w-[50%]"
             type="submit"
-            variant="secondary"
+            variant="outline"
           >
             Logout
           </Button>
