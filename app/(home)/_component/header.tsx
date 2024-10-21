@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
-import { LogOut, MenuIcon, User } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import AvatarImage from "../../_components/avatar";
@@ -7,14 +7,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../_components/ui/dropdown-menu";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Button } from "../../_components/ui/button";
-import { signOutAction } from "../../actions";
 import LogOutButton from "../../_components/logout-button";
 
 const HeaderNav = async () => {
