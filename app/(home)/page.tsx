@@ -5,6 +5,7 @@ import { ThemeSwitcher } from "../_components/theme-switcher";
 import List from "../_components/list";
 import FooterMenu from "../_components/footer";
 import SelectDate from "../_components/date-picker";
+import TodaySchedule from "../_components/today-schedule";
 
 export default async function Index() {
   const supabase = createClient();
@@ -18,6 +19,7 @@ export default async function Index() {
     <>
       <HeaderNav />
       <SelectDate />
+      <TodaySchedule />
       {/* <List /> */}
     </>
   );
