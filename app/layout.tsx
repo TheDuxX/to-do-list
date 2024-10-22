@@ -30,11 +30,7 @@ export default function RootLayout({
           <main className="h-fit w-svw flex flex-col items-center">
             {children}
             <FooterMenu />
-<<<<<<< HEAD
           <span className="min-h-14 w-full "></span>
-=======
-          <span className="min-h-2 w-full "></span>
->>>>>>> 03f7ea455c4703ddb08391ecf4097fe6014d6149
           </main>
         </ThemeProvider>
       </body>
