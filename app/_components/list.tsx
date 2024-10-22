@@ -34,9 +34,9 @@ const List = ({ lists }: ListsProps) => {
           key={list.id}
           className="bg-darkPurple p-3 rounded-md min-h-60 min-w-60 w-fit flex flex-col gap-2"
         >
-          <div className="flex flex-row justify-between items-start ">
-            <h2 className="text-md font-semibold">{list.name}</h2>
-            <div className="flex justify-center items-center bg-primary rounded-full min-w-5 min-h-5">
+          <div className="flex flex-row justify-between items-center ">
+            <h2 className="text-md font-semibold text-nowrap truncate ">{list.name}</h2>
+            <div className="ml-4 flex justify-center items-center bg-primary rounded-full min-w-5 min-h-5">
               <Plus size={14} className="" />
             </div>
           </div>
