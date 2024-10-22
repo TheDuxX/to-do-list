@@ -1,10 +1,10 @@
-'use client'
-import { PlusIcon } from "lucide-react";
-import { Checkbox } from "./ui/checkbox";
-import { Label } from "./ui/label";
-import { Button } from "./ui/button";
+"use client";
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { Plus } from "lucide-react";
+import { Checkbox } from "./ui/checkbox";
+import { Label } from "./ui/label";
+import CheckboxItem from "./checkbox-item";
 
 interface ListItem {
   id: string;
@@ -12,85 +12,40 @@ interface ListItem {
   checked: boolean;
 }
 
-interface List {
-  id: string;
-  name: string;
-  items: ListItem[];
+interface ListsProps {
+  lists:
+    | {
+        id: any;
+        name: any;
+        listitem: {
+          id: any;
+          name: any;
+          checked: any;
+        }[];
+      }[]
+    | null;
 }
 
-const List = () => {
-  const supabase = createClient();
-  const [lists, setLists] = useState<List[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLists = async () => {
-      try {
-        setLoading(true);
-
-        // Busca as listas e seus itens relacionados
-        let { data: listsData, error } = await supabase.from("List").select(`
-            id,
-            name,
-            ListItem (
-              id,
-              name,
-              checked
-            )
-          `);
-
-        if (error) {
-          console.error("Erro ao buscar listas:", error);
-          return;
-        }
-
-        // Mapeia os dados para o formato necessário
-        const formattedLists = listsData.map((list: any) => ({
-          id: list.id,
-          name: list.name,
-          items: list.ListItem,
-        }));
-
-        setLists(formattedLists);
-      } catch (err) {
-        console.error("Erro:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLists();
-  }, [supabase]);
-
-  if (loading) {
-    return <p>Carregando listas...</p>;
-  }
-
+const List = ({ lists }: ListsProps) => {
   return (
-    <div>
-      {lists.length > 0 ? (
-        lists.map((list) => (
-          <div key={list.id} className="mb-4">
-            <h2 className="font-bold text-lg">{list.name}</h2>
-            <ul className="pl-4">
-              {list.items.map((item) => (
-                <li key={item.id} className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={item.checked}
-                    readOnly
-                    className="mr-2"
-                  />
-                  <span>{item.name}</span>
-                </li>
-              ))}
-            </ul>
+    <>
+      {lists?.map((list) => (
+        <div
+          key={list.id}
+          className="bg-darkPurple p-3 rounded-md min-h-60 min-w-60 w-fit flex flex-col gap-2"
+        >
+          <div className="flex flex-row justify-between items-start ">
+            <h2 className="text-md font-semibold">{list.name}</h2>
+            <div className="flex justify-center items-center bg-primary rounded-full min-w-5 min-h-5">
+              <Plus size={14} className="" />
+            </div>
           </div>
-        ))
-      ) : (
-        <p>Nenhuma lista encontrada.</p>
-      )}
-    </div>
+          {list?.listitem.map((item) => (
+            <CheckboxItem key={item.id} item={item} />
+          ))}
+        </div>
+      ))}
+    </>
   );
 };
 
