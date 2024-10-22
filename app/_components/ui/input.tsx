@@ -23,3 +23,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = "Input";
 
 export { Input };
+
+const InputClean = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border border-input px-3 py-2 bg-transparent border-none  placeholder:text-white placeholder:capitalize focus:border-none selection:border-none focus-visible:border-none focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+          className,
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Input.displayName = "Input";
+
+export { InputClean };
