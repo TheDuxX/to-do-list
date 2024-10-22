@@ -2,6 +2,7 @@
 import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
 import { Checkbox } from "./ui/checkbox";
+import { Label } from "./ui/label";
 
 interface CheckboxProps {
   item: {
@@ -38,8 +39,8 @@ const CheckboxItem = ({ item }: CheckboxProps) => {
   return (
     <div className="flex flex-row gap-2">
       {/* Controla o estado do checkbox */}
-      <Checkbox checked={checked} onCheckedChange={toggleCheckbox} />
-      <p className={checked ? "line-through" : ""}>{item.name}</p>
+      <Checkbox id={item.id} checked={checked} onCheckedChange={toggleCheckbox} />
+      <Label htmlFor={item.id} className={checked ? "line-through font-light" : "font-light"}>{item.name}</Label>
     </div>
   );
 };
