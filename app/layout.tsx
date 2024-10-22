@@ -20,17 +20,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={GeistSans.className} suppressHydrationWarning>
-      <body className="bg-gradient-to-b from-darkPurple to-background text-foreground">
+      <body className="">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <main className="h-fit w-svw flex flex-col items-center">
+          <main className="h-svh w-svw flex flex-col items-center bg-gradient-to-b from-darkPurple to-background text-foreground">
             {children}
             <FooterMenu />
-          <span className="min-h-14 w-full "></span>
+            <span className="min-h-14 w-full "></span>
           </main>
         </ThemeProvider>
       </body>
