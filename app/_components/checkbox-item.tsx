@@ -3,6 +3,8 @@ import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
 import { Checkbox } from "./ui/checkbox";
 import { Label } from "./ui/label";
+import { Button } from "./ui/button";
+import { X } from "lucide-react";
 
 interface CheckboxProps {
   item: {
@@ -37,10 +39,13 @@ const CheckboxItem = ({ item }: CheckboxProps) => {
   };
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 w-full justify-between items-center">
       {/* Controla o estado do checkbox */}
-      <Checkbox id={item.id} checked={checked} onCheckedChange={toggleCheckbox} />
-      <Label htmlFor={item.id} className={checked ? "line-through font-light" : "font-light"}>{item.name}</Label>
+      <div className="flex flex-row items-center  gap-2">
+        <Checkbox id={item.id} checked={checked} onCheckedChange={toggleCheckbox} />
+        <Label htmlFor={item.id} className={checked ? "line-through font-light" : "font-light"}>{item.name}</Label>
+      </div>
+      <Button variant="ghost" size="mini" className="flex items-center rounded-full p-1"><X size={10} className="text-gray-50/50"/></Button>
     </div>
   );
 };
