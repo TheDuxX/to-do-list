@@ -17,7 +17,7 @@ const LastestLists = async () => {
     <div className="w-full h-full p-2">
       <h2 className="font-semibold text-lg">Listas</h2>
       {lists?.slice(0, 1).map((list) => (
-        <div className="flex flex-row overflow-auto gap-2 mr-2">
+        <div className="flex flex-row overflow-auto gap-2 rounded-md">
           <List key={list.id} lists={lists} />
         </div>
       ))}
