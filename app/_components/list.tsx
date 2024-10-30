@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Check, Plus } from "lucide-react";
-import CheckboxItem from "./checkbox-item";
 import { Button } from "./ui/button";
-import { Input, InputClean } from "./ui/input";
+import { InputClean } from "./ui/input";
 import { Checkbox } from "./ui/checkbox";
 import DraggableList from "./draggablelist";
+import { useRouter } from "next/navigation";
 
 interface ListItem {
   id: string;
@@ -33,6 +33,7 @@ const List = ({ lists: initialLists }: ListsProps) => {
   const [lists, setLists] = useState(initialLists); // Estado para armazenar as listas e seus itens
   const [newItemName, setNewItemName] = useState(""); // Gerencia o nome do novo item
   const [addingItem, setAddingItem] = useState<string | null>(null); // Gerencia se estamos adicionando um item
+  const router = useRouter();
 
   // Função para adicionar um novo item à lista no Supabase e no estado local
   const handleAddItem = async (listId: string) => {
@@ -93,7 +94,9 @@ const List = ({ lists: initialLists }: ListsProps) => {
           className="bg-darkPurple p-3 rounded-md min-h-60 min-w-60 w-fit flex flex-col gap-2"
         >
           <div className="flex flex-row justify-between items-center ">
-            <h2 className="text-md font-semibold text-nowrap truncate ">{list.name}</h2>
+            <h2 className="text-md font-semibold text-nowrap truncate ">
+              {list.name}
+            </h2>
             <Button
               size="mini"
               className="ml-4 flex justify-center items-center bg-primary rounded-full min-w-5 min-h-5"
@@ -103,8 +106,8 @@ const List = ({ lists: initialLists }: ListsProps) => {
             </Button>
           </div>
 
-           {/* Renderiza os itens existentes com drag and drop */}
-           <DraggableList
+          {/* Renderiza os itens existentes com drag and drop */}
+          <DraggableList
             listId={list.id}
             items={list.listitem}
             onReorder={handleReorderItems}
@@ -113,14 +116,20 @@ const List = ({ lists: initialLists }: ListsProps) => {
           {/* Campo de input para adicionar um novo item */}
           {addingItem === list.id && (
             <div className="flex flex-row gap-2 items-center m-0 p-0">
-              <Checkbox disabled/>
+              <Checkbox disabled />
               <InputClean
-              className="text-sm font-extralight bg-background p-0 px-2 m-0 h-fit"
+                className="text-sm font-extralight bg-background p-0 px-2 m-0 h-fit"
                 value={newItemName}
                 onChange={(e) => setNewItemName(e.target.value)} // Atualiza o nome do novo item
                 placeholder="Novo item"
               />
-              <Button className="rounded-full p-1" size="mini" onClick={() => handleAddItem(list.id)}><Check size={10}/></Button>
+              <Button
+                className="rounded-full p-1"
+                size="mini"
+                onClick={() => handleAddItem(list.id)}
+              >
+                <Check size={10} />
+              </Button>
             </div>
           )}
         </div>

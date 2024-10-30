@@ -31,6 +31,7 @@ const CheckboxItem = ({ item }: CheckboxProps) => {
       .update({ checked: newCheckedState })
       .eq("id", item.id);
 
+
     if (error) {
       console.error("Erro ao atualizar o item:", error);
       // Caso haja erro, reverte o estado local
@@ -45,7 +46,6 @@ const CheckboxItem = ({ item }: CheckboxProps) => {
         <Checkbox id={item.id} checked={checked} onCheckedChange={toggleCheckbox} />
         <Label htmlFor={item.id} className={checked ? "line-through font-light" : "font-light"}>{item.name}</Label>
       </div>
-      <Button variant="ghost" size="mini" className="flex items-center rounded-full p-1"><X size={10} className="text-gray-50/50"/></Button>
     </div>
   );
 };

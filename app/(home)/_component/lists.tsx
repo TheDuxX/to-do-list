@@ -13,12 +13,18 @@ const LastestLists = async () => {
     return <p>Erro ao carregar as listas.</p>;
   }
 
+  const handleListClick = () => {
+    try {
+      console.log()
+    } catch {}
+  }
+
   return (
     <div className="w-full h-full p-2">
       <h2 className="font-semibold text-lg">Listas</h2>
       {lists?.slice(0, 1).map((list) => (
         <div className="flex flex-row overflow-auto gap-2 rounded-md">
-          <List key={list.id} lists={lists} />
+          <List key={list.id} lists={lists}/>
         </div>
       ))}
     </div>
